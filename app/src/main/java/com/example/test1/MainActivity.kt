@@ -33,6 +33,10 @@ class MainActivity : AppCompatActivity() {
         data = Data(addTeamNumber.getText().toString().toInt(),button.text.toString(), addMatchNumber.getText().toString().toInt())
         print(data.Match.toString() + " " + data.Team + " " + data.Pose)
     }
+    fun add(view: View){
+        var button = findViewById<Button>(view.id)
+
+    }
     fun addC(view: View){
         var level = findViewById<Button>(view.id)
         data.setClimb(level.text.toString())
