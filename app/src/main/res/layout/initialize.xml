@@ -15,6 +15,7 @@
         android:fontFamily="serif"
         android:text="Red 3"
         android:textSize="24sp"
+        android:onClick="bData"
         app:backgroundTint="#FF0000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/Red1Button"
@@ -23,7 +24,7 @@
         app:layout_constraintTop_toBottomOf="@+id/red2Button" />
 
     <EditText
-        android:id="@+id/AddTeamNumber"
+        android:id="@+id/addTeamNumber"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
         android:layout_marginStart="32dp"
@@ -58,6 +59,7 @@
         android:fontFamily="serif"
         android:text="Red 1"
         android:textSize="24sp"
+        android:onClick="bData"
         app:backgroundTint="#FF0000"
         app:iconTint="#FF0000"
         app:layout_constraintBottom_toTopOf="@+id/red2Button"
@@ -73,6 +75,7 @@
         android:fontFamily="serif"
         android:text="Red 2"
         android:textSize="24sp"
+        android:onClick="bData"
         app:backgroundTint="#FF0000"
         app:iconTint="#FF0000"
         app:layout_constraintBottom_toTopOf="@+id/red3Button"
@@ -91,7 +94,7 @@
         android:fontFamily="serif"
         android:text="Blue 1"
         android:textSize="24sp"
-        android:onClick="bStart"
+        android:onClick="bData"
         app:backgroundTint="#0000FF"
         app:layout_constraintBottom_toBottomOf="@+id/Red1Button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -120,6 +123,7 @@
         android:fontFamily="serif"
         android:text="Blue 3"
         android:textSize="24sp"
+        android:onClick="bData"
         app:backgroundTint="#0000FF"
         app:layout_constraintBottom_toBottomOf="@+id/red3Button"
         app:layout_constraintEnd_toEndOf="@+id/Blue1Button"
@@ -146,6 +150,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/AddTeamNumber"
+        app:layout_constraintTop_toBottomOf="@id/addTeamNumber"
         app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
