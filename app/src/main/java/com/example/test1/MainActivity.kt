@@ -30,13 +30,10 @@ class MainActivity : AppCompatActivity() {
         var button = findViewById<Button>(view.id)
         if(addTeamNumber.text.toString() == "" || addMatchNumber.text.toString() == "" ) return
         setContentView(R.layout.data_input)
-        data = Data(addTeamNumber.getText().toString().toInt(),button.text.toString(), addMatchNumber.getText().toString().toInt())
+        data = Data(addTeamNumber.text.toString().toInt(),button.text.toString(), addMatchNumber.text.toString().toInt())
         print(data.Match.toString() + " " + data.Team + " " + data.Pose)
     }
-    fun add(view: View){
-        var button = findViewById<Button>(view.id)
 
-    }
     fun addC(view: View){
         var level = findViewById<Button>(view.id)
         data.setClimb(level.text.toString())
@@ -44,6 +41,46 @@ class MainActivity : AppCompatActivity() {
     }
     fun setToData(){
         setContentView(R.layout.data_input)
+
+    }
+    fun addLowAuto(view: View){
+        var button = findViewById<Button>(view.id)
+        data.addLowAuto()
+        button.text = "Low Goal: " + data.getALow()
+        data.last(view)
+    }
+    fun addHighAuto(view: View){
+        var button = findViewById<Button>(view.id)
+        data.addHighAuto()
+        button.text = "High Goal: " + data.getAHigh()
+        data.last(view)
+    }
+    fun addLowTele(view: View){
+        var button = findViewById<Button>(view.id)
+        data.addLowTele()
+        button.text = "Low Goal: " + data.getTLow()
+        data.last(view)
+    }
+    fun addHighTele(view: View){
+        var button = findViewById<Button>(view.id)
+        data.addHighTele()
+        button.text = "High Goal " + data.getTHigh()
+        data.last(view)
+    }
+
+    fun taxi(view: View){
+        data.taxi()
+        setTaxi.text = "Taxi: " + data.getTaxi()
+        data.last(view)
+    }
+    fun addFoul(view: View){
+        var button = findViewById<Button>(view.id)
+        data.addFoul()
+        button.text = "Foul " + data.getFoul()
+        data.last(view)
+    }
+    fun addNote(view: View){
+
     }
 
 }
