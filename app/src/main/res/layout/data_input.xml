@@ -180,8 +180,9 @@
         android:id="@+id/AddFoul"
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="39dp"
         android:backgroundTintMode="multiply"
         android:onClick="addFoul"
@@ -196,13 +197,13 @@
         android:id="@+id/UndoButton"
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:backgroundTintMode="multiply"
         android:text="Undo"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="@+id/AddFoul"
-        app:layout_constraintEnd_toStartOf="@+id/FinButton"
+        app:layout_constraintEnd_toStartOf="@+id/Win"
         app:layout_constraintStart_toEndOf="@id/AddFoul"
         app:layout_constraintTop_toTopOf="@id/AddFoul"
         app:layout_constraintVertical_bias="0.0" />
@@ -240,34 +241,35 @@
         app:layout_constraintTop_toTopOf="@+id/LowClimb" />
 
     <Button
-        android:id="@+id/FinButton"
+        android:id="@+id/Lose"
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:backgroundTintMode="multiply"
-        android:text="Fin"
         android:onClick="fin"
+        android:text="Lose"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="@+id/UndoButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/UndoButton"
-        app:layout_constraintTop_toTopOf="@+id/UndoButton" />
+        app:layout_constraintStart_toEndOf="@id/Win"
+        app:layout_constraintTop_toTopOf="@+id/Win" />
+-->
 
-    <TextView
-        android:id="@+id/endTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="379dp"
-        android:layout_marginBottom="9dp"
-        android:text="End:"
-        android:textColor="#FBE9E7"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/AddFoul"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LowClimb" />
+    <Button
+        android:id="@+id/Win"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#000000"
+        android:text="Win"
+        android:backgroundTintMode="multiply"
+        android:onClick="fin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="@id/UndoButton"
+        app:layout_constraintEnd_toStartOf="@id/Lose"
+        app:layout_constraintStart_toEndOf="@id/UndoButton"
+        app:layout_constraintTop_toTopOf="@+id/UndoButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

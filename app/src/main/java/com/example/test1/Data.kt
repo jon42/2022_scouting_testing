@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Data (val Team: Int, val Pose: String,val Match: Int) {
-
+    //initializes all the data
     private var autoHighGoal = 0
     private var autoLowGoal = 0
     private var teleHighGoal = 0
@@ -15,7 +15,8 @@ data class Data (val Team: Int, val Pose: String,val Match: Int) {
     private var notes = ""
     private var lastAction = mutableListOf<View>()
     private var taxi = false
-
+    var win = "Loss"
+    //add to values
     fun addHighAuto(){
         autoHighGoal++
 
@@ -68,7 +69,7 @@ data class Data (val Team: Int, val Pose: String,val Match: Int) {
     }
     fun undo(){
         if(lastAction.isEmpty()) return
-        when(lastAction.last()){
+        when(lastAction.last().id){
 
             }
         }
@@ -84,8 +85,8 @@ data class Data (val Team: Int, val Pose: String,val Match: Int) {
         return (autoHighGoal * 4 + autoLowGoal * 2 + taxiVal + teleHighGoal * 2 + teleLowGoal - foul + climbVal)
     }
     fun finStr(): String{
-        return ("Total Points: " + totalPoints() + "\n\nAuto:\nLow Goal: " + autoLowGoal + "   High Goal: " + autoHighGoal +
-                "  taxi: " + taxi + "\n\nTeleop:" + "\nLowGoal: " + teleLowGoal + "   High Goal:" + teleHighGoal + "\nClimb: " + climb +
+        return (Team.toString() + " Match Number: " + Match +  "\n" + win + "\n\nTotal Points: " + totalPoints() + "\n\nAuto:\nLow Goal: " + autoLowGoal +
+                "   High Goal: " + autoHighGoal + "  taxi: " + taxi + "\n\nTeleop:" + "\nLowGoal: " + teleLowGoal + "   High Goal:" + teleHighGoal + "\nClimb: " + climb +
                  "\nFoul: " + foul + "\nNotes: " + notes)
     }
     fun addNote(str: String){

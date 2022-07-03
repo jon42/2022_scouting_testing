@@ -29,12 +29,13 @@ class MainActivity : AppCompatActivity() {
     }
     fun bData(view: View){
         var button = findViewById<Button>(view.id)
-        if(addTeamNumber.text.toString() == "" || addMatchNumber.text.toString() == "" ) return
+        if(addTeamNumber.text.toString() == "" || addMatchNumber.text.toString() == "" ) return //checks if there is number in the box if not returns
         setContentView(R.layout.data_input)
+        //creates new data with info from buttons
         data = Data(addTeamNumber.text.toString().toInt(),button.text.toString(), addMatchNumber.text.toString().toInt())
         print(data.Match.toString() + " " + data.Team + " " + data.Pose)
     }
-
+    //add values based on what Button was clicked
     fun addC(view: View){
         var level = findViewById<Button>(view.id)
         data.setClimb(level.text.toString())
@@ -81,6 +82,8 @@ class MainActivity : AppCompatActivity() {
         data.last(view)
     }
     fun fin(view: View){
+        var button = findViewById<Button>(view.id)
+        data.win = if(button.text.toString().equals("Win"))  "Win" else "Win"
         setContentView(R.layout.end_data)
     DataTXT.text = data.finStr()
     }
