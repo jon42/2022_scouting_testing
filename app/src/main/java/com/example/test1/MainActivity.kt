@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.data_input.*
+import kotlinx.android.synthetic.main.end_data.*
 import kotlinx.android.synthetic.main.initialize.*
 
 class MainActivity : AppCompatActivity() {
@@ -79,8 +80,13 @@ class MainActivity : AppCompatActivity() {
         button.text = "Foul " + data.getFoul()
         data.last(view)
     }
-    fun addNote(view: View){
-
+    fun fin(view: View){
+        setContentView(R.layout.end_data)
+    DataTXT.text = data.finStr()
+    }
+    fun enterNote(view: View){
+        data.addNote(Notes.text.toString())
+        DataTXT.text = DataTXT.text.toString() + Notes.text
     }
 
 }

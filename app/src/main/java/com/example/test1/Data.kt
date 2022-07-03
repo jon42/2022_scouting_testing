@@ -72,4 +72,23 @@ data class Data (val Team: Int, val Pose: String,val Match: Int) {
 
             }
         }
+    private fun totalPoints(): Int{
+        var taxiVal = if(taxi) 2 else 0
+        var climbVal = 15
+        when(climb){
+            "" -> climbVal = 0
+            "Low" -> climbVal = 4
+            "Mid" -> climbVal = 6
+            "High" -> climbVal = 10
+        }
+        return (autoHighGoal * 4 + autoLowGoal * 2 + taxiVal + teleHighGoal * 2 + teleLowGoal - foul + climbVal)
     }
+    fun finStr(): String{
+        return ("Total Points: " + totalPoints() + "\n\nAuto:\nLow Goal: " + autoLowGoal + "   High Goal: " + autoHighGoal +
+                "  taxi: " + taxi + "\n\nTeleop:" + "\nLowGoal: " + teleLowGoal + "   High Goal:" + teleHighGoal + "\nClimb: " + climb +
+                 "\nFoul: " + foul + "\nNotes: " + notes)
+    }
+    fun addNote(str: String){
+        notes = str
+    }
+}

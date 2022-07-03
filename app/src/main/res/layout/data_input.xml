@@ -182,48 +182,30 @@
         android:layout_height="90dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="3dp"
         android:layout_marginBottom="39dp"
         android:backgroundTintMode="multiply"
-        android:text="Foul"
         android:onClick="addFoul"
+        android:text="Foul"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/AddNote"
+        app:layout_constraintEnd_toStartOf="@+id/UndoButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LowClimb" />
-
-    <Button
-        android:id="@+id/AddNote"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="0dp"
-        android:backgroundTintMode="multiply"
-        android:text="Note"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="@+id/AddFoul"
-        app:layout_constraintEnd_toStartOf="@+id/UndoButton"
-        app:layout_constraintStart_toEndOf="@+id/AddFoul"
-        app:layout_constraintTop_toTopOf="@+id/AddFoul" />
 
     <Button
         android:id="@+id/UndoButton"
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginStart="32dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="1dp"
         android:backgroundTintMode="multiply"
         android:text="Undo"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="@+id/AddFoul"
         app:layout_constraintEnd_toStartOf="@+id/FinButton"
-        app:layout_constraintStart_toEndOf="@+id/AddNote"
-        app:layout_constraintTop_toTopOf="@+id/AddNote" />
+        app:layout_constraintStart_toEndOf="@id/AddFoul"
+        app:layout_constraintTop_toTopOf="@id/AddFoul"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/climbTitle"
@@ -265,6 +247,7 @@
         android:layout_marginEnd="16dp"
         android:backgroundTintMode="multiply"
         android:text="Fin"
+        android:onClick="fin"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="@+id/UndoButton"
         app:layout_constraintEnd_toEndOf="parent"
