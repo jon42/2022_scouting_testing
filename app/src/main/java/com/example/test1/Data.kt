@@ -5,6 +5,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Data (val Team: Int, val Pose: String,val Match: Int) {
+    fun constructor(){
+
+    }
     //initializes all the data
     private var autoHighGoal = 0
     private var autoLowGoal = 0
@@ -15,7 +18,11 @@ data class Data (val Team: Int, val Pose: String,val Match: Int) {
     private var notes = ""
     private var lastAction = mutableListOf<View>()
     private var taxi = false
+    private var missedShotsAuto = 0
+    private var missedShotsTele = 0
+    private var steal = 0
     var win = "Loss"
+
     //add to values
     fun addHighAuto(){
         autoHighGoal++
@@ -39,7 +46,15 @@ data class Data (val Team: Int, val Pose: String,val Match: Int) {
     fun setClimb(str: String){
         climb = str
     }
-
+    fun addMissedShotAuto(){
+        missedShotsAuto++
+    }
+    fun addMissedShotTele(){
+     missedShotsTele++
+    }
+    fun addSteal(){
+        steal++
+    }
     fun getClimb(): String{
         return climb
     }
