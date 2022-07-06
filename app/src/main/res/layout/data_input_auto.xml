@@ -7,65 +7,44 @@
     android:background="#373737"
     tools:visibility="visible">
 
-    <TextView
-        android:id="@+id/AutoTitle"
-        android:layout_width="110dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="336dp"
-        android:layout_marginBottom="693dp"
-        android:text="Auto:"
-        android:backgroundTint="#433C3C"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.238"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
     <Button
-        android:id="@+id/button"
-        android:layout_width="126dp"
+        android:id="@+id/TeleButton"
+        android:layout_width="wrap_content"
         android:layout_height="70dp"
-        android:layout_marginStart="181dp"
-        android:layout_marginEnd="43dp"
+        android:layout_marginStart="107dp"
+        android:layout_marginEnd="24dp"
         android:backgroundTint="#433C3C"
         android:backgroundTintMode="add"
+        android:onClick="setTele"
         android:text="TeleOp"
-        android:textSize="34sp"
+        android:textSize="24sp"
         app:iconTint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/AutoTitle"
+        app:layout_constraintBottom_toBottomOf="@+id/AutoTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.584"
         app:layout_constraintStart_toEndOf="@+id/AutoTitle"
-        app:layout_constraintTop_toTopOf="@id/AutoTitle"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@id/AutoTitle" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/LowGoalBA"
         android:layout_width="176dp"
         android:layout_height="156dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="6dp"
+        android:backgroundTint="#000000"
+        android:fontFamily="serif"
         android:onClick="addLowAuto"
         android:text="Low Goal:"
-        android:fontFamily="serif"
-        android:textSize="24dp"
         android:textColor="@color/white"
-        android:backgroundTint="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/MissedBA"
+        app:layout_constraintEnd_toStartOf="@+id/HighGoalBA"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AutoTitle" />
+        app:layout_constraintTop_toBottomOf="@id/AutoTitle" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/HighGoalBA"
         android:layout_width="176dp"
         android:layout_height="156dp"
         android:layout_marginStart="8dp"
@@ -76,13 +55,13 @@
         android:textSize="24dp"
         android:textColor="@color/white"
         android:backgroundTint="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
+        app:layout_constraintBottom_toBottomOf="@+id/LowGoalBA"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button2"
-        app:layout_constraintTop_toTopOf="@+id/button2" />
+        app:layout_constraintStart_toEndOf="@+id/LowGoalBA"
+        app:layout_constraintTop_toTopOf="@+id/LowGoalBA" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/MissedBA"
         android:layout_width="176dp"
         android:layout_height="156dp"
         android:layout_marginTop="6dp"
@@ -94,12 +73,12 @@
         android:textColor="@color/white"
         android:backgroundTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="@id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintEnd_toEndOf="@+id/LowGoalBA"
+        app:layout_constraintStart_toStartOf="@id/LowGoalBA"
+        app:layout_constraintTop_toBottomOf="@+id/LowGoalBA" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/TaxiBA"
         android:layout_width="176dp"
         android:layout_height="156dp"
         android:onClick="taxi"
@@ -108,27 +87,82 @@
         android:fontFamily="serif"
         android:textSize="24dp"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@id/button4"
-        app:layout_constraintEnd_toEndOf="@id/button3"
-        app:layout_constraintStart_toStartOf="@+id/button3"
-        app:layout_constraintTop_toTopOf="@+id/button4" />
+        app:layout_constraintBottom_toBottomOf="@id/MissedBA"
+        app:layout_constraintEnd_toEndOf="@id/HighGoalBA"
+        app:layout_constraintStart_toStartOf="@+id/HighGoalBA"
+        app:layout_constraintTop_toTopOf="@+id/MissedBA" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/StealBA"
         android:layout_width="176dp"
         android:layout_height="156dp"
         android:layout_marginStart="158dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="158dp"
         android:layout_marginBottom="130dp"
-        android:text="Steal:"
-        android:fontFamily="serif"
-        android:textSize="24dp"
-        android:textColor="@color/white"
         android:backgroundTint="@color/black"
+        android:fontFamily="serif"
+        android:onClick="addSteal"
+        android:text="Steal:"
+        android:textColor="@color/white"
+        android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        app:layout_constraintTop_toBottomOf="@+id/MissedBA" />
+
+    <Button
+        android:id="@+id/FoulBA"
+        android:layout_width="120dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/black"
+        android:fontFamily="serif"
+        android:onClick="addFoul"
+        android:text="Foul"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/UndoBA"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/StealBA"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/UndoBA"
+        android:layout_width="120dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/black"
+        android:fontFamily="serif"
+        android:text="Undo"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/FoulBA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/FoulBA"
+        app:layout_constraintTop_toTopOf="@+id/FoulBA" />
+
+    <Button
+        android:id="@+id/AutoTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="250dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#534B4B"
+        android:fontFamily="serif"
+        android:text="Auto:"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/LowGoalBA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -76,6 +76,15 @@ data class Data (val Team: Int, val Pose: String,val Match: Int) {
     fun getTaxi(): Boolean{
         return taxi
     }
+    fun getSteal(): Int{
+        return steal
+    }
+    fun getMissedShotAuto(): Int{
+        return missedShotsAuto
+    }
+    fun getMissedShotTele(): Int{
+     return missedShotsTele
+    }
     fun last(Str: View){
         lastAction.add(Str)
         if(lastAction.size > 15){

@@ -23,10 +23,13 @@ class MainActivity : Activity() {
     public override fun onStart(){
         super.onStart()
 
-
-
     }
-
+    fun setAuto(view: View){
+        setContentView(R.layout.data_input_auto)
+    }
+    fun setTele(view: View){
+        setContentView(R.layout.data_input_tele)
+    }
     fun bStart(view: View) {
         setContentView(R.layout.initialize)
     }
@@ -60,14 +63,21 @@ class MainActivity : Activity() {
         button.text = "High Goal: " + data.getAHigh()
         data.last(view)
     }
-    fun addSteal(){
+    fun addSteal(view: View){
+        var button = findViewById<Button>(view.id)
         data.addSteal()
+        button.text = "Steal:" + data.getSteal()
     }
     fun taxi(view: View){
         var button = findViewById<Button>(view.id)
         data.taxi()
         button.text = "Taxi: " + data.getTaxi()
         data.last(view)
+    }
+    fun addMissedShotAuto(view: View){
+        var button = findViewById<Button>(view.id)
+        data.addMissedShotAuto()
+        button.text = "Missed:" + data.getMissedShotAuto()
     }
     //TeleOp Data Collection
     fun addLowTele(view: View){
@@ -88,9 +98,6 @@ class MainActivity : Activity() {
         button.text = "Foul " + data.getFoul()
         data.last(view)
     }
-        fun addMissedShotAuto(){
-            data.addMissedShotAuto()
-        }
     fun addMissedTele(){
         data.addMissedShotTele()
     }
