@@ -4,10 +4,8 @@ import android.view.View
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Data (val Team: Int, val Pose: String,val Match: Int) {
-    fun constructor(){
+data class Data (var Team: Int, var Pose: String, var Match: Int) {
 
-    }
     //initializes all the data
     private var autoHighGoal = 0
     private var autoLowGoal = 0
@@ -22,6 +20,7 @@ data class Data (val Team: Int, val Pose: String,val Match: Int) {
     private var missedShotsTele = 0
     private var steal = 0
     var win = "Loss"
+
 
     //add to values
     fun addHighAuto(){
@@ -97,20 +96,24 @@ data class Data (val Team: Int, val Pose: String,val Match: Int) {
 
             }
         }
+    fun calcClimbPoints(): Int{
+        when(climb){
+            "" -> return 0
+            "Low" -> return 4
+            "Mid" -> return 6
+            "High" -> return 10
+        }
+        return 15
+    }
     private fun totalPoints(): Int{
         var taxiVal = if(taxi) 2 else 0
-        var climbVal = 15
-        when(climb){
-            "" -> climbVal = 0
-            "Low" -> climbVal = 4
-            "Mid" -> climbVal = 6
-            "High" -> climbVal = 10
-        }
-        return (autoHighGoal * 4 + autoLowGoal * 2 + taxiVal + teleHighGoal * 2 + teleLowGoal - foul + climbVal)
+        return (autoHighGoal * 4 + autoLowGoal * 2 + taxiVal + teleHighGoal * 2 + teleLowGoal - foul + calcClimbPoints())
     }
     fun finStr(): String{
-        return (Team.toString() + " Match Number: " + Match +  "\n" + win + "\n\nTotal Points: " + totalPoints() + "\n\nAuto:\nLow Goal: " + autoLowGoal +
-                "   High Goal: " + autoHighGoal + "  taxi: " + taxi + "\n\nTeleop:" + "\nLowGoal: " + teleLowGoal + "   High Goal:" + teleHighGoal + "\nClimb: " + climb +
+        return ("Team: " + Team + "\nMatch Number: " + Match +  "\n" + win + "\n\nTotal Points: " + totalPoints() + "\n\nAuto: " + (autoLowGoal * 2 + autoHighGoal * 4)+ "pts"
+                + "\nLow Goal: " + autoLowGoal + "   High Goal: " + autoHighGoal + "\nMissed: " + missedShotsAuto + "  taxi: " + taxi +"  Steals: " + steal
+                + "\n\nTeleOp: " + (teleHighGoal * 2 + teleLowGoal + calcClimbPoints()) + "pts" + "\nLowGoal: " + teleLowGoal + "   High Goal:" + teleHighGoal
+                + "\nMissed: " + missedShotsTele + "\nClimb: " + climb +
                  "\nFoul: " + foul + "\nNotes: " + notes)
     }
     fun addNote(str: String){

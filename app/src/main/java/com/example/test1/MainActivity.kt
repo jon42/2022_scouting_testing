@@ -1,12 +1,17 @@
 package com.example.test1
 
 import android.app.Activity
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.data_input_tele.*
 import kotlinx.android.synthetic.main.end_data.*
 import kotlinx.android.synthetic.main.initialize.*
 
@@ -17,8 +22,9 @@ class MainActivity : Activity() {
         setContentView(R.layout.activity_main)
     }
     val db = Firebase.firestore
+    var init = R.layout.initialize
 
-
+    private var dataStr = ""
     lateinit var data: Data
     public override fun onStart(){
         super.onStart()
@@ -31,20 +37,24 @@ class MainActivity : Activity() {
         setContentView(R.layout.data_input_tele)
     }
     fun bStart(view: View) {
-        setContentView(R.layout.initialize)
+        setContentView(init)
     }
     fun bData(view: View){
+        var teamNumber: EditText = findViewById(R.id.addTeamNumber)
+        var matchNumber: EditText = findViewById(R.id.addMatchNumber)
         var button = findViewById<Button>(view.id)
-        if(addTeamNumber.text.toString() == "" || addMatchNumber.text.toString() == "" ) return //checks if there is number in the box if not returns
+        if(teamNumber.text.toString() == "" || matchNumber.text.toString() == "" ) return //checks if there is number in the box if not returns
         setContentView(R.layout.data_input_auto)
         //creates new data with info from buttons
-        data = Data(addTeamNumber.text.toString().toInt(),button.text.toString(), addMatchNumber.text.toString().toInt())
+        println(teamNumber.text)
+        data = Data(teamNumber.text.toString().toInt(),button.text.toString(), matchNumber.text.toString().toInt())
+        println(data.Team)
     }
     //add values based on what Button was clicked
     fun addC(view: View){
         var level = findViewById<Button>(view.id)
         data.setClimb(level.text.toString())
-//        climbTitle.text = "Climb: " + data.getClimb()
+        ClimbTitle.text = "Climb: " + data.getClimb()
     }
     fun setToData(){
         setContentView(R.layout.data_input_auto)
@@ -89,7 +99,7 @@ class MainActivity : Activity() {
     fun addHighTele(view: View){
         var button = findViewById<Button>(view.id)
         data.addHighTele()
-        button.text = "High Goal " + data.getTHigh()
+        button.text = "High Goal: " + data.getTHigh()
         data.last(view)
     }
     fun addFoul(view: View){
@@ -98,19 +108,34 @@ class MainActivity : Activity() {
         button.text = "Foul " + data.getFoul()
         data.last(view)
     }
-    fun addMissedTele(){
+    fun addMissedTele(view: View){
+        var button = findViewById<Button>(view.id)
         data.addMissedShotTele()
+        button.text = "Missed: " + data.getMissedShotTele()
     }
     fun fin(view: View){
         var button = findViewById<Button>(view.id)
         data.win = if(button.text.toString() == "Win")  "Win" else "Lose"
+        dataStr = data.finStr()
+//        DataTXT.setText(dataStr)
         setContentView(R.layout.end_data)
-    DataTXT.text = data.finStr()
-        db.collection("data").document(data.Team.toString()).set(data, SetOptions.merge())
+        var dTXT: TextView  = findViewById(R.id.DataTXT)
+        dTXT.text = dataStr
     }
     fun enterNote(view: View){
+        var dTXT: TextView  = findViewById(R.id.DataTXT)
         data.addNote(Notes.text.toString())
-        DataTXT.text = DataTXT.text.toString() + Notes.text
+        dTXT.text = dataStr + Notes.text
+    }
+    fun newData(view: View){
+        init = R.layout.initialize
+        setContentView(init)
+        addTeamNumber.setText("")
+        addMatchNumber.setText("")
+        db.collection("data").document(data.Team.toString()).set(data, SetOptions.merge())
+            .addOnSuccessListener { Log.d(TAG, "Yay! it worked!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+
     }
 
 }

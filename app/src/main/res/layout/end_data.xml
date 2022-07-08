@@ -38,16 +38,17 @@
         android:layout_marginStart="150dp"
         android:layout_marginTop="151dp"
         android:layout_marginEnd="150dp"
-        android:layout_marginBottom="450dp"
-        android:text="TextView"
+        android:layout_marginBottom="32dp"
+        android:text="Data"
         android:textAlignment="center"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/fin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@id/Notes"
+        app:layout_constraintVertical_bias="0.59000003" />
 
     <Button
         android:id="@+id/enterNote"
@@ -75,7 +76,7 @@
         android:layout_marginBottom="150dp"
         android:backgroundTintMode="multiply"
         android:text="Finished"
-        android:onClick="bStart"
+        android:onClick="newData"
         app:background="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
