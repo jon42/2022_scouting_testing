@@ -26,9 +26,9 @@ class MainActivity : Activity() {
 
     private var dataStr = ""
     lateinit var data: Data
+    private var prevActions = mutableListOf<String>()
     public override fun onStart(){
         super.onStart()
-
     }
     fun setAuto(view: View){
         setContentView(R.layout.data_input_auto)
@@ -58,7 +58,6 @@ class MainActivity : Activity() {
     }
     fun setToData(){
         setContentView(R.layout.data_input_auto)
-
     }
     //auto data collection
     fun addLowAuto(view: View){
@@ -136,6 +135,15 @@ class MainActivity : Activity() {
             .addOnSuccessListener { Log.d(TAG, "Yay! it worked!") }
             .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
 
+    }
+    fun addPrevAction(str: String){
+        prevActions.add(str)
+        if(prevActions.size > 20) prevActions.removeFirst()
+    }
+    fun undo(){
+        when(prevActions.last()){
+
+        }
     }
 
 }

@@ -14,7 +14,6 @@
         android:layout_marginBottom="230dp"
         android:background="#FF0000"
         android:backgroundTint="#FF0000"
-        android:backgroundTintMode="add"
         android:fontFamily="serif"
         android:onClick="bData"
         android:text="Red 3"

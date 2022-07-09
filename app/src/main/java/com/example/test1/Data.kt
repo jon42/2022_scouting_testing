@@ -25,7 +25,6 @@ data class Data (var Team: Int, var Pose: String, var Match: Int) {
     //add to values
     fun addHighAuto(){
         autoHighGoal++
-
     }
     fun addLowAuto(){
         autoLowGoal++
