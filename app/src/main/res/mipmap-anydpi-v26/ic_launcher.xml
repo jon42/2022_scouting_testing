@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <foreground>
+
+        <inset
+            android:drawable="@drawable/sotabots_logo"
+            android:insetBottom="18dp"
+            android:insetLeft="18dp"
+            android:insetRight="30dp"
+            android:insetTop="18dp">
+
+        </inset>
+
+    </foreground>
     <background android:drawable="@drawable/ic_launcher_background" />
-    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+<!--    <foreground android:drawable="@drawable/ic_launcher_foreground" />-->
 </adaptive-icon>

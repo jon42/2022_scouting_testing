@@ -1,57 +1,69 @@
 package com.example.test1
 
-import android.view.View
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class Data (var Team: Int, var Pose: String, var Match: Int) {
 
     //initializes all the data
+     var totalPoints = 0
+     var autoPoints = 0
     private var autoHighGoal = 0
     private var autoLowGoal = 0
+     var telePoints = 0
     private var teleHighGoal = 0
     private var teleLowGoal = 0
     private var climb = ""
     private var foul = 0
     private var notes = ""
-    private var lastAction = mutableListOf<View>()
+    private var prevAction = mutableListOf<String>()
     private var taxi = false
     private var missedShotsAuto = 0
     private var missedShotsTele = 0
     private var steal = 0
-    var win = "Loss"
+    private var win = "Loss"
 
 
     //add to values
     fun addHighAuto(){
         autoHighGoal++
+        last("aHigh")
+    }
+
+    fun addHighTele(){
+        teleHighGoal++
+        last("tHigh")
     }
     fun addLowAuto(){
         autoLowGoal++
-    }
-    fun addHighTele(){
-        teleHighGoal++
+        last("aLow")
     }
     fun addLowTele(){
         teleLowGoal++
+        last("tLow")
     }
     fun addFoul(){
         foul++
+        last("foul")
     }
     fun taxi(){
         taxi = !taxi
     }
     fun setClimb(str: String){
         climb = str
+        last("climb")
     }
     fun addMissedShotAuto(){
         missedShotsAuto++
+        last("aMissed")
     }
     fun addMissedShotTele(){
      missedShotsTele++
+        last("tMissed")
     }
     fun addSteal(){
         steal++
+        last("steal")
     }
     fun getClimb(): String{
         return climb
@@ -77,24 +89,71 @@ data class Data (var Team: Int, var Pose: String, var Match: Int) {
     fun getSteal(): Int{
         return steal
     }
+    fun getNotes(): String{
+        return notes
+    }
     fun getMissedShotAuto(): Int{
         return missedShotsAuto
     }
     fun getMissedShotTele(): Int{
      return missedShotsTele
     }
-    fun last(Str: View){
-        lastAction.add(Str)
-        if(lastAction.size > 15){
-            lastAction.removeAt(0)
-        }
+    fun getWin(): String{
+        return win
     }
-    fun undo(){
-        if(lastAction.isEmpty()) return
-        when(lastAction.last().id){
-
-            }
+    fun setWin(str: String){
+        win = str
+    }
+    fun last(Str: String){
+        prevAction.add(Str)
+        if(prevAction.size > 15){
+            prevAction.removeAt(0)
         }
+        println(prevAction)
+    }
+    fun undo(): Int {
+        println(prevAction)
+        if(prevAction.isEmpty()) return (R.layout.initialize)
+        when(prevAction.removeLast()){
+            "aHigh" -> {
+                autoHighGoal--
+                return R.layout.data_input_auto
+            }
+            "aLow" -> {
+                autoLowGoal--
+                return R.layout.data_input_auto
+            }
+            "tHigh" -> {
+                teleHighGoal--
+                return R.layout.data_input_tele
+            }
+            "tLow" -> {
+                teleLowGoal--
+                return R.layout.data_input_tele
+            }
+            "climb" -> {
+                climb = ""
+                return R.layout.data_input_tele
+            }
+            "foul" -> {
+                foul--
+            }
+            "aMissed" -> {
+                missedShotsAuto--
+                return R.layout.data_input_auto
+            }
+            "tMissed" -> {
+                missedShotsTele--
+                return R.layout.data_input_tele
+            }
+            "steal" -> {
+                steal--
+                return R.layout.data_input_auto
+            }
+
+        }
+        return (0)
+    }
     fun calcClimbPoints(): Int{
         when(climb){
             "" -> return 0
@@ -108,10 +167,20 @@ data class Data (var Team: Int, var Pose: String, var Match: Int) {
         var taxiVal = if(taxi) 2 else 0
         return (autoHighGoal * 4 + autoLowGoal * 2 + taxiVal + teleHighGoal * 2 + teleLowGoal - foul + calcClimbPoints())
     }
+    private fun autoPoints(): Int{
+        var taxiVal = if(taxi) 2 else 0
+        return (autoHighGoal * 4 + autoLowGoal * 2 + taxiVal)
+    }
+    private fun telePoints(): Int{
+        return calcClimbPoints() + teleLowGoal + (teleHighGoal * 2)
+    }
     fun finStr(): String{
-        return ("Team: " + Team + "\nMatch Number: " + Match +  "\n" + win + "\n\nTotal Points: " + totalPoints() + "\n\nAuto: " + (autoLowGoal * 2 + autoHighGoal * 4)+ "pts"
+        totalPoints = totalPoints()
+        autoPoints = autoPoints()
+        telePoints = telePoints()
+        return ("Team: $Team \nMatch Number: $Match \n  $win" + "\n\nTotal Points: " + totalPoints() + "\n\nAuto: " + autoPoints+ "pts"
                 + "\nLow Goal: " + autoLowGoal + "   High Goal: " + autoHighGoal + "\nMissed: " + missedShotsAuto + "  taxi: " + taxi +"  Steals: " + steal
-                + "\n\nTeleOp: " + (teleHighGoal * 2 + teleLowGoal + calcClimbPoints()) + "pts" + "\nLowGoal: " + teleLowGoal + "   High Goal:" + teleHighGoal
+                + "\n\nTeleOp: " + telePoints + "pts" + "\nLowGoal: " + teleLowGoal + "   High Goal:" + teleHighGoal
                 + "\nMissed: " + missedShotsTele + "\nClimb: " + climb +
                  "\nFoul: " + foul + "\nNotes: " + notes)
     }

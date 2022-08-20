@@ -3,13 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/jonw3/AndroidStudioProjects/test1/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.175" />
         <entry key="..\:/Users/jonw3/AndroidStudioProjects/test1/app/src/main/res/drawable/button_shape.xml" value="0.1" />
+        <entry key="..\:/Users/jonw3/AndroidStudioProjects/test1/app/src/main/res/drawable/ic_launcher_background.xml" value="0.175" />
+        <entry key="..\:/Users/jonw3/AndroidStudioProjects/test1/app/src/main/res/drawable/outline_black.xml" value="0.2555" />
+        <entry key="..\:/Users/jonw3/AndroidStudioProjects/test1/app/src/main/res/drawable/outline_white.xml" value="0.241" />
+        <entry key="..\:/Users/jonw3/AndroidStudioProjects/test1/app/src/main/res/drawable/outlint_white.xml" value="0.1095" />
+        <entry key="..\:/Users/jonw3/AndroidStudioProjects/test1/app/src/main/res/drawable/sotabots_foreground.xml" value="0.241" />
+        <entry key="..\:/Users/jonw3/AndroidStudioProjects/test1/app/src/main/res/drawable/title.xml" value="0.181" />
         <entry key="..\:/Users/jonw3/AndroidStudioProjects/test1/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/jonw3/AndroidStudioProjects/test1/app/src/main/res/layout/data_input.xml" value="0.2" />
-        <entry key="..\:/Users/jonw3/AndroidStudioProjects/test1/app/src/main/res/layout/data_input_auto.xml" value="0.264" />
+        <entry key="..\:/Users/jonw3/AndroidStudioProjects/test1/app/src/main/res/layout/data_input_auto.xml" value="0.25" />
+        <entry key="..\:/Users/jonw3/AndroidStudioProjects/test1/app/src/main/res/layout/data_input_auto_test.xml" value="0.19202898550724637" />
         <entry key="..\:/Users/jonw3/AndroidStudioProjects/test1/app/src/main/res/layout/data_input_tele.xml" value="0.25" />
+        <entry key="..\:/Users/jonw3/AndroidStudioProjects/test1/app/src/main/res/layout/data_input_test.xml" value="0.19202898550724637" />
         <entry key="..\:/Users/jonw3/AndroidStudioProjects/test1/app/src/main/res/layout/end_data.xml" value="0.24895833333333334" />
         <entry key="..\:/Users/jonw3/AndroidStudioProjects/test1/app/src/main/res/layout/initialize.xml" value="0.1" />
+        <entry key="..\:/Users/jonw3/AndroidStudioProjects/test1/app/src/main/res/layout/layout.xml" value="0.3625" />
+        <entry key="..\:/Users/jonw3/AndroidStudioProjects/test1/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2555" />
+        <entry key="..\:/Users/jonw3/AndroidStudioProjects/test1/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1165" />
       </map>
     </option>
   </component>
