@@ -8,6 +8,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.data_input_auto.*
@@ -20,7 +23,24 @@ class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setView(R.layout.activity_main)
-        currentView = R.layout.activity_main
+        hideSystemUI()
+    }
+    override fun onResume(){
+        super.onResume()
+        hideSystemUI()
+    }
+    // Function to hide NavigationBar
+    private fun hideSystemUI() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowInsetsControllerCompat(window,
+            window.decorView.findViewById(android.R.id.content)).let { controller ->
+            controller.hide(WindowInsetsCompat.Type.systemBars())
+
+            // When the screen is swiped up at the bottom
+            // of the application, the navigationBar shall
+            // appear for some time
+            controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
     }
 
     var init = R.layout.initialize
@@ -36,16 +56,20 @@ class MainActivity : Activity() {
 
     }
 
+
+
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
 
 
     }
     fun setAuto(view: View){
+        hideSystemUI()
         setView(R.layout.data_input_auto)
     }
 
     fun bStart(view: View) {
+        hideSystemUI()
         setView(init)
     }
     fun setTData(){
@@ -129,6 +153,7 @@ class MainActivity : Activity() {
         addPrevAction("tMissed")
     }
     fun fin(view: View){
+        hideSystemUI()
         var button = findViewById<Button>(view.id)
         var str = if(button.text.toString() == "Win")  "Win" else "Lose"
         data.setWin(str)
@@ -139,11 +164,13 @@ class MainActivity : Activity() {
         dTXT.text = dataStr
     }
     fun enterNote(view: View){
+        hideSystemUI()
         var dTXT: TextView  = findViewById(R.id.DataTXT)
         data.addNote(Notes.text.toString())
         dTXT.text = dataStr + Notes.text
     }
     fun newData(view: View){
+        data.addNote(Notes.text.toString())
         val init = R.layout.initialize
         setView(init)
         addTeamNumber.setText("")
@@ -171,6 +198,7 @@ class MainActivity : Activity() {
     }
     private fun setTele(){
         setView(R.layout.data_input_tele)
+        hideSystemUI()
         runOnUiThread(Runnable {updateTele()})
     }
     fun updateTele(){
@@ -191,7 +219,7 @@ class MainActivity : Activity() {
         setInputAuto()
     }
     private fun setInputAuto(){
-
+        hideSystemUI()
         setView(R.layout.data_input_auto)
         currentView = R.layout.data_input_auto
         updateAuto()
@@ -225,6 +253,9 @@ class MainActivity : Activity() {
         setContentView(view)
         println(view)
         currentView = view
+    }
+    fun addClimbTime(){
+        data.climbTime = editClimbTime.text.toString().toDouble()
     }
 }
 

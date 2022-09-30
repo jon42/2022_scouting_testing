@@ -8,6 +8,7 @@ data class Data (var Team: Int, var Pose: String, var Match: Int) {
     //initializes all the data
      var totalPoints = 0
      var autoPoints = 0
+    var climbTime = 0.0
     private var autoHighGoal = 0
     private var autoLowGoal = 0
      var telePoints = 0
@@ -181,10 +182,10 @@ data class Data (var Team: Int, var Pose: String, var Match: Int) {
         return ("Team: $Team \nMatch Number: $Match \n  $win" + "\n\nTotal Points: " + totalPoints() + "\n\nAuto: " + autoPoints+ "pts"
                 + "\nLow Goal: " + autoLowGoal + "   High Goal: " + autoHighGoal + "\nMissed: " + missedShotsAuto + "  taxi: " + taxi +"  Steals: " + steal
                 + "\n\nTeleOp: " + telePoints + "pts" + "\nLowGoal: " + teleLowGoal + "   High Goal:" + teleHighGoal
-                + "\nMissed: " + missedShotsTele + "\nClimb: " + climb +
+                + "\nMissed: " + missedShotsTele + "\nClimb: " + climb +"\nClimb Time: $climbTime"+
                  "\nFoul: " + foul + "\nNotes: " + notes)
     }
     fun addNote(str: String){
-        notes = str
+        notes += str
     }
 }

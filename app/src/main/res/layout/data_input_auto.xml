@@ -27,8 +27,8 @@
 
     <Button
         android:id="@+id/LowGoalBA"
-        android:layout_width="176dp"
-        android:layout_height="156dp"
+        android:layout_width="170dp"
+        android:layout_height="120dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
@@ -45,8 +45,8 @@
 
     <Button
         android:id="@+id/HighGoalBA"
-        android:layout_width="176dp"
-        android:layout_height="156dp"
+        android:layout_width="170dp"
+        android:layout_height="120dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="25dp"
         android:background="@drawable/button_shape"
@@ -61,8 +61,8 @@
 
     <Button
         android:id="@+id/MissedBA"
-        android:layout_width="176dp"
-        android:layout_height="156dp"
+        android:layout_width="170dp"
+        android:layout_height="120dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/button_shape"
@@ -77,8 +77,8 @@
 
     <Button
         android:id="@+id/TaxiBA"
-        android:layout_width="176dp"
-        android:layout_height="156dp"
+        android:layout_width="170dp"
+        android:layout_height="120dp"
         android:onClick="taxi"
         android:text="Taxi:"
         android:textColor="@color/white"
@@ -91,11 +91,11 @@
 
     <Button
         android:id="@+id/StealBA"
-        android:layout_width="176dp"
-        android:layout_height="156dp"
-        android:layout_marginStart="158dp"
+        android:layout_width="170dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="120dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="158dp"
+        android:layout_marginEnd="120dp"
         android:layout_marginBottom="8dp"
         android:onClick="addSteal"
         android:text="Steal:"
@@ -114,10 +114,10 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="64dp"
+        android:background="@drawable/button_shape"
         android:onClick="addFoul"
         android:text="Foul"
-        android:background="@drawable/button_shape"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -147,13 +147,13 @@
         android:layout_width="wrap_content"
         android:layout_height="70dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="250dp"
         android:backgroundTint="#373737"
         android:text="Auto:"
         android:textColor="@color/white"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/LowGoalBA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.363"
         app:layout_constraintStart_toStartOf="parent"
